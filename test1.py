@@ -5,6 +5,7 @@ from cvzone.SelfiSegmentationModule import SelfiSegmentation
 from rembg import remove
 
 
+
 # 顯示圖片
 def ShowIMG(img, winName):
     cv2.imshow(winName, img)
