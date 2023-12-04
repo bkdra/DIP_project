@@ -212,7 +212,7 @@ def Add_sunglass(img, sunglass, face_cascade):
             img[singleFace[1]+ int(singleFace[3]*0.27):singleFace[1]+resize_sunglass_1bit.shape[0] + int(singleFace[3]*0.27), singleFace[0]:singleFace[0]+resize_sunglass_1bit.shape[1]] = cv2.bitwise_or(img[singleFace[1]+ int(singleFace[3]*0.27):singleFace[1]+resize_sunglass_1bit.shape[0] + int(singleFace[3]*0.27), singleFace[0]:singleFace[0]+resize_sunglass_1bit.shape[1]], resize_sunglass)
 
 
-# 讀取相機，由他抓取每一偵的圖片，作為底圖，來添加衣服
+# 主函式：讀取相機，由他抓取每一偵的圖片，作為底圖，來添加衣服
 def main_capture():
     long_sleeves = ReadIMG("long_sleeves.jpg")
     pants = ReadIMG("pants2.jpg")
@@ -294,7 +294,7 @@ def main_capture():
     cv2.destroyAllWindows()
 
 
-# 讀取圖片做為底圖，來添加衣服
+# 主函式：讀取圖片做為底圖，來添加衣服
 def main_picture():
     long_sleeves = ReadIMG("long_sleeves.jpg")
     pants = ReadIMG("pants2.jpg")
