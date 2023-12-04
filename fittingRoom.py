@@ -300,7 +300,7 @@ def main_picture():
     pants = ReadIMG("pants2.jpg")
     sunglass = ReadIMG("sunglass1.jpg")
     background = ReadIMG("fittingRoom.jpg")
-    frame = ReadIMG("full.jpg")
+    frame = ReadIMG("boy2.jpg")
     # 讀取衣服、褲子、太陽眼鏡、背景圖片、包含人物的圖片
     long_sleeves = RemoveBG_cloth(long_sleeves)
     pants = RemoveBG_cloth(pants)
@@ -328,7 +328,6 @@ def main_picture():
 
     # 當有讀取到身體各部位資料時
     if poseResult.pose_landmarks:
-        print("run")
         position1 = (poseResult.pose_landmarks.landmark[12].x * width, poseResult.pose_landmarks.landmark[12].y * height)
         position2 = (poseResult.pose_landmarks.landmark[11].x * width, poseResult.pose_landmarks.landmark[11].y * height)
         position3 = (poseResult.pose_landmarks.landmark[24].x * width, poseResult.pose_landmarks.landmark[24].y * height)
@@ -358,5 +357,5 @@ def main_picture():
     ShowIMG(frame, "picture")
 
 
-main_capture()
-# main_picture()
+# main_capture()
+main_picture()
