@@ -214,10 +214,10 @@ def Add_sunglass(img, sunglass, face_cascade):
 
 # 主函式：讀取相機，由他抓取每一偵的圖片，作為底圖，來添加衣服
 def main_capture():
-    long_sleeves = ReadIMG("long_sleeves.jpg")
-    pants = ReadIMG("pants2.jpg")
-    sunglass = ReadIMG("sunglass1.jpg")
-    background = ReadIMG("fittingRoom.jpg")
+    long_sleeves = ReadIMG("./cloth/long_sleeves.jpg")
+    pants = ReadIMG("./pants/pants2.jpg")
+    sunglass = ReadIMG("./sunglass/sunglass1.jpg")
+    background = ReadIMG("./background/fittingRoom.jpg")
     frame = ReadIMG("full.jpg")
     # 讀取衣服、褲子、太陽眼鏡、背景圖片、包含人物的圖片
     long_sleeves = RemoveBG_cloth(long_sleeves)
@@ -295,12 +295,12 @@ def main_capture():
 
 
 # 主函式：讀取圖片做為底圖，來添加衣服
-def main_picture():
-    long_sleeves = ReadIMG("long_sleeves.jpg")
-    pants = ReadIMG("pants2.jpg")
-    sunglass = ReadIMG("sunglass1.jpg")
-    background = ReadIMG("fittingRoom.jpg")
-    frame = ReadIMG("boy2.jpg")
+def main_picture(img = "./picture/boy2.jpg"):
+    long_sleeves = ReadIMG("./cloth/long_sleeves.jpg")
+    pants = ReadIMG("./pants/pants2.jpg")
+    sunglass = ReadIMG("./sunglass/sunglass1.jpg")
+    background = ReadIMG("./background/fittingRoom.jpg")
+    frame = ReadIMG(img)
     # 讀取衣服、褲子、太陽眼鏡、背景圖片、包含人物的圖片
     long_sleeves = RemoveBG_cloth(long_sleeves)
     pants = RemoveBG_cloth(pants)
@@ -354,8 +354,8 @@ def main_picture():
             frame = Add_cloth(frame, long_sleeves, position1, position2, position3, position4)
         # 若未超出邊界，則為人的身體加上衣服與褲子
         
-    ShowIMG(frame, "picture")
+    return frame
 
 
-# main_capture()
-main_picture()
+#main_capture()
+#main_picture()
