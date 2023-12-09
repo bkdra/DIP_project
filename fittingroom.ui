@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>692</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,16 +56,15 @@ border-bottom-right-radius : 7px</string>
             </property>
             <property name="font">
              <font>
-              <family>Consolas</family>
-              <pointsize>10</pointsize>
-              <weight>9</weight>
+              <family>Microsoft JhengHei UI</family>
+              <pointsize>12</pointsize>
+              <weight>75</weight>
               <italic>false</italic>
-              <bold>false</bold>
+              <bold>true</bold>
              </font>
             </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(0, 0, 0);
-font: 75 10pt &quot;Consolas&quot;;
 border-color: rgb(187, 225, 250);
 border: 2px solid rgb(187, 225, 250);
 border-top-left-radius :7px;
@@ -77,6 +76,16 @@ border-bottom-right-radius : 7px</string>
             <property name="text">
              <string>相片模式
 Picture Mode</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>icon/image.png</normaloff>icon/image.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>45</width>
+              <height>45</height>
+             </size>
             </property>
             <property name="checkable">
              <bool>true</bool>
@@ -93,16 +102,15 @@ Picture Mode</string>
             </property>
             <property name="font">
              <font>
-              <family>Consolas</family>
-              <pointsize>10</pointsize>
-              <weight>9</weight>
+              <family>Microsoft JhengHei UI</family>
+              <pointsize>12</pointsize>
+              <weight>75</weight>
               <italic>false</italic>
-              <bold>false</bold>
+              <bold>true</bold>
              </font>
             </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(0, 0, 0);
-font: 75 10pt &quot;Consolas&quot;;
 border-color: rgb(187, 225, 250);
 border: 2px solid rgb(187, 225, 250);
 border-top-left-radius :7px;
@@ -114,6 +122,16 @@ border-bottom-right-radius : 7px</string>
             <property name="text">
              <string>鏡頭模式
 Camera Mode</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>icon/photo-camera.png</normaloff>icon/photo-camera.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>45</width>
+              <height>45</height>
+             </size>
             </property>
             <property name="checkable">
              <bool>true</bool>
@@ -161,8 +179,8 @@ border-bottom-right-radius : 7px</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>606</width>
-               <height>423</height>
+               <width>475</width>
+               <height>515</height>
               </rect>
              </property>
              <property name="styleSheet">
@@ -203,7 +221,7 @@ border-bottom-right-radius : 7px</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
+                 <string notr="true">background-color: rgb(205, 245, 253);
 border: 0px;</string>
                 </property>
                 <property name="text">
@@ -228,7 +246,7 @@ border: 0px;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>130</width>
+              <width>200</width>
               <height>0</height>
              </size>
             </property>
@@ -239,24 +257,38 @@ border: 0px;</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">border: 4px solid rgb(15, 76, 117);
-border-top-left-radius :7px;
-border-top-right-radius : 7px;                  
-border-bottom-left-radius : 7px;
-border-bottom-right-radius : 7px</string>
+             <string notr="true"/>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
-              <widget class="QPushButton" name="selectClothbtn">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
+              <widget class="QWidget" name="widget_5" native="true">
                <property name="styleSheet">
-                <string notr="true">color: rgb(0, 0, 0);
-font: 75 10pt &quot;Consolas&quot;;
+                <string notr="true">border: 4px solid rgb(15, 76, 117);
+border-top-left-radius :7px;
+border-top-right-radius : 7px;                  
+border-bottom-left-radius : 7px;
+border-bottom-right-radius : 7px</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <widget class="QPushButton" name="selectClothbtn">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Microsoft JhengHei UI</family>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <italic>false</italic>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(0, 0, 0);
 border-color: rgb(187, 225, 250);
 border: 2px solid rgb(187, 225, 250);
 border-top-left-radius :7px;
@@ -264,72 +296,97 @@ background-color: rgb(187, 225, 250);
 border-top-right-radius : 7px;                  
 border-bottom-left-radius : 7px;
 border-bottom-right-radius : 7px</string>
-               </property>
-               <property name="text">
-                <string>選擇上衣</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_2">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
+                  </property>
+                  <property name="text">
+                   <string>選擇上衣</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>icon/tshirt.png</normaloff>icon/tshirt.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>45</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="clothlabel">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Microsoft JhengHei UI</family>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);
 border: 0px;</string>
-               </property>
-               <property name="text">
-                <string>調整上衣尺寸</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSlider" name="clothSizeSlider">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
+                  </property>
+                  <property name="text">
+                   <string>調整上衣尺寸(100%)</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSlider" name="clothSizeSlider">
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);
 border: 0px;</string>
-               </property>
-               <property name="maximum">
-                <number>200</number>
-               </property>
-               <property name="singleStep">
-                <number>1</number>
-               </property>
-               <property name="value">
-                <number>100</number>
-               </property>
-               <property name="sliderPosition">
-                <number>100</number>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="tickPosition">
-                <enum>QSlider::TicksBelow</enum>
-               </property>
-               <property name="tickInterval">
-                <number>10</number>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="selectPantsbtn">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(0, 0, 0);
-font: 75 10pt &quot;Consolas&quot;;
+                  </property>
+                  <property name="maximum">
+                   <number>200</number>
+                  </property>
+                  <property name="singleStep">
+                   <number>1</number>
+                  </property>
+                  <property name="value">
+                   <number>100</number>
+                  </property>
+                  <property name="sliderPosition">
+                   <number>100</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="tickPosition">
+                   <enum>QSlider::TicksBelow</enum>
+                  </property>
+                  <property name="tickInterval">
+                   <number>10</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="selectPantsbtn">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Microsoft JhengHei UI</family>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(0, 0, 0);
 border-color: rgb(187, 225, 250);
 border: 2px solid rgb(187, 225, 250);
 border-top-left-radius :7px;
@@ -337,66 +394,92 @@ background-color: rgb(187, 225, 250);
 border-top-right-radius : 7px;                  
 border-bottom-left-radius : 7px;
 border-bottom-right-radius : 7px</string>
-               </property>
-               <property name="text">
-                <string>選擇下著</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
+                  </property>
+                  <property name="text">
+                   <string>選擇下著</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>icon/jeans.png</normaloff>icon/jeans.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>45</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="pantslabel">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Microsoft JhengHei UI</family>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);
 border: 0px;</string>
-               </property>
-               <property name="text">
-                <string>調整下著尺寸</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSlider" name="pantSizeSlider">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
+                  </property>
+                  <property name="text">
+                   <string>調整下著尺寸(100%)</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSlider" name="pantSizeSlider">
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);
 border: 0px;</string>
-               </property>
-               <property name="maximum">
-                <number>200</number>
-               </property>
-               <property name="value">
-                <number>100</number>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="tickPosition">
-                <enum>QSlider::TicksBelow</enum>
-               </property>
-               <property name="tickInterval">
-                <number>10</number>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="selectSunglassesbtn">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(0, 0, 0);
-font: 75 10pt &quot;Consolas&quot;;
+                  </property>
+                  <property name="maximum">
+                   <number>200</number>
+                  </property>
+                  <property name="value">
+                   <number>100</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="tickPosition">
+                   <enum>QSlider::TicksBelow</enum>
+                  </property>
+                  <property name="tickInterval">
+                   <number>10</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="selectSunglassesbtn">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Microsoft JhengHei UI</family>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <italic>false</italic>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(0, 0, 0);
 border-color: rgb(187, 225, 250);
 border: 2px solid rgb(187, 225, 250);
 border-top-left-radius :7px;
@@ -404,56 +487,150 @@ background-color: rgb(187, 225, 250);
 border-top-right-radius : 7px;                  
 border-bottom-left-radius : 7px;
 border-bottom-right-radius : 7px</string>
-               </property>
-               <property name="text">
-                <string>選擇眼鏡</string>
-               </property>
+                  </property>
+                  <property name="text">
+                   <string>選擇眼鏡</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>icon/sunglasses.png</normaloff>icon/sunglasses.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>50</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="sunglasseslabel">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Microsoft JhengHei UI</family>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);
+border: 0px;</string>
+                  </property>
+                  <property name="text">
+                   <string>調整眼鏡尺寸(100%)</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSlider" name="horizontalSlider_3">
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);
+border: 0px;</string>
+                  </property>
+                  <property name="maximum">
+                   <number>200</number>
+                  </property>
+                  <property name="pageStep">
+                   <number>10</number>
+                  </property>
+                  <property name="value">
+                   <number>100</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="tickPosition">
+                   <enum>QSlider::TicksBelow</enum>
+                  </property>
+                  <property name="tickInterval">
+                   <number>10</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_3">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
+              <widget class="QWidget" name="widget_6" native="true">
                <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
-border: 0px;</string>
+                <string notr="true">border: 4px solid rgb(15, 76, 117);
+border-top-left-radius :7px;
+border-top-right-radius : 7px;                  
+border-bottom-left-radius : 7px;
+border-bottom-right-radius : 7px</string>
                </property>
-               <property name="text">
-                <string>調整眼鏡尺寸</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSlider" name="horizontalSlider_3">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
-border: 0px;</string>
-               </property>
-               <property name="maximum">
-                <number>200</number>
-               </property>
-               <property name="pageStep">
-                <number>10</number>
-               </property>
-               <property name="value">
-                <number>100</number>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="tickPosition">
-                <enum>QSlider::TicksBelow</enum>
-               </property>
-               <property name="tickInterval">
-                <number>10</number>
-               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item>
+                 <widget class="QPushButton" name="selectBGBtn">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Microsoft JhengHei UI</family>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <italic>false</italic>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(0, 0, 0);
+border-color: rgb(187, 225, 250);
+border: 2px solid rgb(187, 225, 250);
+border-top-left-radius :7px;
+background-color: rgb(187, 225, 250);
+border-top-right-radius : 7px;                  
+border-bottom-left-radius : 7px;
+border-bottom-right-radius : 7px</string>
+                  </property>
+                  <property name="text">
+                   <string>選擇背景</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>icon/background.png</normaloff>icon/background.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>50</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="BGcheckbox">
+                  <property name="font">
+                   <font>
+                    <family>Microsoft JhengHei UI</family>
+                    <pointsize>12</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(187, 225, 250);</string>
+                  </property>
+                  <property name="text">
+                   <string>替換背景</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>

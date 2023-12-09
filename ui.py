@@ -17,12 +17,18 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         self.selectSunglassesbtn.clicked.connect(self.selectSunglassesBtnClicked)
         self.pantSizeSlider.valueChanged.connect(self.pantSizeSliderChanged)
         self.clothSizeSlider.valueChanged.connect(self.clothSizeSliderChanged)
+        self.selectBGBtn.clicked.connect(self.selectBGBtnClicked)
+        self.BGcheckbox.stateChanged.connect(self.BGcheckboxChanged)
         self.set_style()
         
     
     def pictureModeBtnClicked(self):
         self.pictureModeBtn.setChecked(True)
         self.cameraModeBtn.setChecked(False)
+        if hasattr(self, 'camera') and self.camera.isOpened():
+            self.camera.release()  # 釋放相機資源
+        if hasattr(self, 'timer') and self.timer.isActive():
+            self.timer.stop()
         self.ft.picPath = QFileDialog.getOpenFileName(self, "開啟圖片", "./")[0]
         try:
             self.update_picture()
@@ -32,6 +38,10 @@ class MainWindow(QMainWindow,Ui_MainWindow):
     def cameraModeBtnClicked(self):
         self.pictureModeBtn.setChecked(False)
         self.cameraModeBtn.setChecked(True)
+        if hasattr(self, 'camera') and self.camera.isOpened():
+            self.camera.release()  # 釋放相機資源
+        if hasattr(self, 'timer') and self.timer.isActive():
+            self.timer.stop()
         self.camera = cv2.VideoCapture(0)
         if not self.camera.isOpened():
             self.label.setText("攝影機未開啟")
@@ -79,11 +89,13 @@ class MainWindow(QMainWindow,Ui_MainWindow):
 
     def pantSizeSliderChanged(self):
         self.ft.set_pantsSize(self.pantSizeSlider.value()/100.0)
+        self.pantslabel.setText("調整下著尺寸("+str(self.pantSizeSlider.value())+"%)")
         if self.pictureModeBtn.isChecked():
             self.update_picture()
 
     def clothSizeSliderChanged(self):
         self.ft.set_clothSize(self.clothSizeSlider.value()/100.0)
+        self.clothlabel.setText("調整上著尺寸("+str(self.clothSizeSlider.value())+"%)")
         print(self.clothSizeSlider.value())
         if self.pictureModeBtn.isChecked():
             self.update_picture()
@@ -95,6 +107,26 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         pixmap = QPixmap.fromImage(qimg)
         self.imageLabel.setPixmap(pixmap)
     
+    def selectBGBtnClicked(self):
+        path = QFileDialog.getOpenFileName(self, "開啟圖片", "./")[0]
+        try:
+            self.ft.set_background(path)
+            self.BGcheckbox.setChecked(True)
+            self.ft.backgroundisON = True
+            if self.pictureModeBtn.isChecked():
+                self.update_picture()
+        except:
+            pass
+
+    def BGcheckboxChanged(self):
+        if self.BGcheckbox.isChecked():
+            self.ft.backgroundisON = True
+            if self.pictureModeBtn.isChecked():
+                self.update_picture()
+        else:
+            self.ft.backgroundisON = False
+            if self.pictureModeBtn.isChecked():
+                self.update_picture()
     def set_style(self):
         SBstylesheet = '''
             QScrollBarArea{
@@ -133,7 +165,6 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         modeBtnstylesheet = '''
             QPushButton{
                 color: rgb(0, 0, 0);
-                font: 75 10pt "Consolas";
                 border-color: rgb(187, 225, 250);
                 border: 2px solid rgb(187, 225, 250);
                 border-top-left-radius :7px;
@@ -157,7 +188,6 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         selectBtnstylesheet = '''
             QPushButton{
                 color: rgb(0, 0, 0);
-                font: 75 10pt "Consolas";
                 border-color: rgb(187, 225, 250);
                 border: 2px solid rgb(187, 225, 250);
                 border-top-left-radius :7px;
@@ -174,3 +204,5 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         self.selectClothbtn.setStyleSheet(selectBtnstylesheet)
         self.selectPantsbtn.setStyleSheet(selectBtnstylesheet)
         self.selectSunglassesbtn.setStyleSheet(selectBtnstylesheet)
+        self.selectBGBtn.setStyleSheet(selectBtnstylesheet)
+    

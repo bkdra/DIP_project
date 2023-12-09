@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(800, 692)
         MainWindow.setStyleSheet("background-color: rgb(22, 26, 48);")
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -45,14 +45,13 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.pictureModeBtn.sizePolicy().hasHeightForWidth())
         self.pictureModeBtn.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setFamily("Consolas")
-        font.setPointSize(10)
-        font.setBold(False)
+        font.setFamily("Microsoft JhengHei UI")
+        font.setPointSize(12)
+        font.setBold(True)
         font.setItalic(False)
-        font.setWeight(9)
+        font.setWeight(75)
         self.pictureModeBtn.setFont(font)
         self.pictureModeBtn.setStyleSheet("color: rgb(0, 0, 0);\n"
-"font: 75 10pt \"Consolas\";\n"
 "border-color: rgb(187, 225, 250);\n"
 "border: 2px solid rgb(187, 225, 250);\n"
 "border-top-left-radius :7px;\n"
@@ -60,6 +59,10 @@ class Ui_MainWindow(object):
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("icon/image.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pictureModeBtn.setIcon(icon)
+        self.pictureModeBtn.setIconSize(QtCore.QSize(45, 45))
         self.pictureModeBtn.setCheckable(True)
         self.pictureModeBtn.setObjectName("pictureModeBtn")
         self.horizontalLayout.addWidget(self.pictureModeBtn)
@@ -70,14 +73,13 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.cameraModeBtn.sizePolicy().hasHeightForWidth())
         self.cameraModeBtn.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setFamily("Consolas")
-        font.setPointSize(10)
-        font.setBold(False)
+        font.setFamily("Microsoft JhengHei UI")
+        font.setPointSize(12)
+        font.setBold(True)
         font.setItalic(False)
-        font.setWeight(9)
+        font.setWeight(75)
         self.cameraModeBtn.setFont(font)
         self.cameraModeBtn.setStyleSheet("color: rgb(0, 0, 0);\n"
-"font: 75 10pt \"Consolas\";\n"
 "border-color: rgb(187, 225, 250);\n"
 "border: 2px solid rgb(187, 225, 250);\n"
 "border-top-left-radius :7px;\n"
@@ -85,6 +87,10 @@ class Ui_MainWindow(object):
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("icon/photo-camera.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.cameraModeBtn.setIcon(icon1)
+        self.cameraModeBtn.setIconSize(QtCore.QSize(45, 45))
         self.cameraModeBtn.setCheckable(True)
         self.cameraModeBtn.setObjectName("cameraModeBtn")
         self.horizontalLayout.addWidget(self.cameraModeBtn)
@@ -105,7 +111,7 @@ class Ui_MainWindow(object):
         self.imageArea.setWidgetResizable(True)
         self.imageArea.setObjectName("imageArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 606, 423))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 475, 515))
         self.scrollAreaWidgetContents.setStyleSheet("border: 4px solid rgb(15, 76, 117);\n"
 "border-top-left-radius :7px;\n"
 "border-top-right-radius : 7px;                  \n"
@@ -123,7 +129,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.imageLabel.sizePolicy().hasHeightForWidth())
         self.imageLabel.setSizePolicy(sizePolicy)
         self.imageLabel.setMinimumSize(QtCore.QSize(0, 0))
-        self.imageLabel.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        self.imageLabel.setStyleSheet("background-color: rgb(205, 245, 253);\n"
 "border: 0px;")
         self.imageLabel.setText("")
         self.imageLabel.setIndent(-1)
@@ -137,24 +143,35 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.widget_4.sizePolicy().hasHeightForWidth())
         self.widget_4.setSizePolicy(sizePolicy)
-        self.widget_4.setMinimumSize(QtCore.QSize(130, 0))
+        self.widget_4.setMinimumSize(QtCore.QSize(200, 0))
         self.widget_4.setMaximumSize(QtCore.QSize(300, 16777215))
-        self.widget_4.setStyleSheet("border: 4px solid rgb(15, 76, 117);\n"
+        self.widget_4.setStyleSheet("")
+        self.widget_4.setObjectName("widget_4")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.widget_4)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.widget_5 = QtWidgets.QWidget(parent=self.widget_4)
+        self.widget_5.setStyleSheet("border: 4px solid rgb(15, 76, 117);\n"
 "border-top-left-radius :7px;\n"
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
-        self.widget_4.setObjectName("widget_4")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.widget_4)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.selectClothbtn = QtWidgets.QPushButton(parent=self.widget_4)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
+        self.widget_5.setObjectName("widget_5")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.widget_5)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.selectClothbtn = QtWidgets.QPushButton(parent=self.widget_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.selectClothbtn.sizePolicy().hasHeightForWidth())
         self.selectClothbtn.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft JhengHei UI")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.selectClothbtn.setFont(font)
         self.selectClothbtn.setStyleSheet("color: rgb(0, 0, 0);\n"
-"font: 75 10pt \"Consolas\";\n"
 "border-color: rgb(187, 225, 250);\n"
 "border: 2px solid rgb(187, 225, 250);\n"
 "border-top-left-radius :7px;\n"
@@ -162,20 +179,30 @@ class Ui_MainWindow(object):
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("icon/tshirt.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.selectClothbtn.setIcon(icon2)
+        self.selectClothbtn.setIconSize(QtCore.QSize(45, 45))
         self.selectClothbtn.setObjectName("selectClothbtn")
-        self.verticalLayout_3.addWidget(self.selectClothbtn)
-        self.label_2 = QtWidgets.QLabel(parent=self.widget_4)
+        self.verticalLayout_5.addWidget(self.selectClothbtn)
+        self.clothlabel = QtWidgets.QLabel(parent=self.widget_5)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
-        self.label_2.setSizePolicy(sizePolicy)
-        self.label_2.setStyleSheet("color: rgb(255, 255, 255);\n"
+        sizePolicy.setHeightForWidth(self.clothlabel.sizePolicy().hasHeightForWidth())
+        self.clothlabel.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft JhengHei UI")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.clothlabel.setFont(font)
+        self.clothlabel.setStyleSheet("color: rgb(255, 255, 255);\n"
 "border: 0px;")
-        self.label_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayout_3.addWidget(self.label_2)
-        self.clothSizeSlider = QtWidgets.QSlider(parent=self.widget_4)
+        self.clothlabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.clothlabel.setObjectName("clothlabel")
+        self.verticalLayout_5.addWidget(self.clothlabel)
+        self.clothSizeSlider = QtWidgets.QSlider(parent=self.widget_5)
         self.clothSizeSlider.setStyleSheet("color: rgb(255, 255, 255);\n"
 "border: 0px;")
         self.clothSizeSlider.setMaximum(200)
@@ -186,15 +213,20 @@ class Ui_MainWindow(object):
         self.clothSizeSlider.setTickPosition(QtWidgets.QSlider.TickPosition.TicksBelow)
         self.clothSizeSlider.setTickInterval(10)
         self.clothSizeSlider.setObjectName("clothSizeSlider")
-        self.verticalLayout_3.addWidget(self.clothSizeSlider)
-        self.selectPantsbtn = QtWidgets.QPushButton(parent=self.widget_4)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
+        self.verticalLayout_5.addWidget(self.clothSizeSlider)
+        self.selectPantsbtn = QtWidgets.QPushButton(parent=self.widget_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.selectPantsbtn.sizePolicy().hasHeightForWidth())
         self.selectPantsbtn.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft JhengHei UI")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.selectPantsbtn.setFont(font)
         self.selectPantsbtn.setStyleSheet("color: rgb(0, 0, 0);\n"
-"font: 75 10pt \"Consolas\";\n"
 "border-color: rgb(187, 225, 250);\n"
 "border: 2px solid rgb(187, 225, 250);\n"
 "border-top-left-radius :7px;\n"
@@ -202,20 +234,30 @@ class Ui_MainWindow(object):
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("icon/jeans.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.selectPantsbtn.setIcon(icon3)
+        self.selectPantsbtn.setIconSize(QtCore.QSize(45, 45))
         self.selectPantsbtn.setObjectName("selectPantsbtn")
-        self.verticalLayout_3.addWidget(self.selectPantsbtn)
-        self.label = QtWidgets.QLabel(parent=self.widget_4)
+        self.verticalLayout_5.addWidget(self.selectPantsbtn)
+        self.pantslabel = QtWidgets.QLabel(parent=self.widget_5)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy)
-        self.label.setStyleSheet("color: rgb(255, 255, 255);\n"
+        sizePolicy.setHeightForWidth(self.pantslabel.sizePolicy().hasHeightForWidth())
+        self.pantslabel.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft JhengHei UI")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pantslabel.setFont(font)
+        self.pantslabel.setStyleSheet("color: rgb(255, 255, 255);\n"
 "border: 0px;")
-        self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label.setObjectName("label")
-        self.verticalLayout_3.addWidget(self.label)
-        self.pantSizeSlider = QtWidgets.QSlider(parent=self.widget_4)
+        self.pantslabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.pantslabel.setObjectName("pantslabel")
+        self.verticalLayout_5.addWidget(self.pantslabel)
+        self.pantSizeSlider = QtWidgets.QSlider(parent=self.widget_5)
         self.pantSizeSlider.setStyleSheet("color: rgb(255, 255, 255);\n"
 "border: 0px;")
         self.pantSizeSlider.setMaximum(200)
@@ -224,15 +266,21 @@ class Ui_MainWindow(object):
         self.pantSizeSlider.setTickPosition(QtWidgets.QSlider.TickPosition.TicksBelow)
         self.pantSizeSlider.setTickInterval(10)
         self.pantSizeSlider.setObjectName("pantSizeSlider")
-        self.verticalLayout_3.addWidget(self.pantSizeSlider)
-        self.selectSunglassesbtn = QtWidgets.QPushButton(parent=self.widget_4)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
+        self.verticalLayout_5.addWidget(self.pantSizeSlider)
+        self.selectSunglassesbtn = QtWidgets.QPushButton(parent=self.widget_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.selectSunglassesbtn.sizePolicy().hasHeightForWidth())
         self.selectSunglassesbtn.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft JhengHei UI")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.selectSunglassesbtn.setFont(font)
         self.selectSunglassesbtn.setStyleSheet("color: rgb(0, 0, 0);\n"
-"font: 75 10pt \"Consolas\";\n"
 "border-color: rgb(187, 225, 250);\n"
 "border: 2px solid rgb(187, 225, 250);\n"
 "border-top-left-radius :7px;\n"
@@ -240,20 +288,30 @@ class Ui_MainWindow(object):
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("icon/sunglasses.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.selectSunglassesbtn.setIcon(icon4)
+        self.selectSunglassesbtn.setIconSize(QtCore.QSize(50, 50))
         self.selectSunglassesbtn.setObjectName("selectSunglassesbtn")
-        self.verticalLayout_3.addWidget(self.selectSunglassesbtn)
-        self.label_3 = QtWidgets.QLabel(parent=self.widget_4)
+        self.verticalLayout_5.addWidget(self.selectSunglassesbtn)
+        self.sunglasseslabel = QtWidgets.QLabel(parent=self.widget_5)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
-        self.label_3.setSizePolicy(sizePolicy)
-        self.label_3.setStyleSheet("color: rgb(255, 255, 255);\n"
+        sizePolicy.setHeightForWidth(self.sunglasseslabel.sizePolicy().hasHeightForWidth())
+        self.sunglasseslabel.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft JhengHei UI")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.sunglasseslabel.setFont(font)
+        self.sunglasseslabel.setStyleSheet("color: rgb(255, 255, 255);\n"
 "border: 0px;")
-        self.label_3.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label_3.setObjectName("label_3")
-        self.verticalLayout_3.addWidget(self.label_3)
-        self.horizontalSlider_3 = QtWidgets.QSlider(parent=self.widget_4)
+        self.sunglasseslabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.sunglasseslabel.setObjectName("sunglasseslabel")
+        self.verticalLayout_5.addWidget(self.sunglasseslabel)
+        self.horizontalSlider_3 = QtWidgets.QSlider(parent=self.widget_5)
         self.horizontalSlider_3.setStyleSheet("color: rgb(255, 255, 255);\n"
 "border: 0px;")
         self.horizontalSlider_3.setMaximum(200)
@@ -263,7 +321,55 @@ class Ui_MainWindow(object):
         self.horizontalSlider_3.setTickPosition(QtWidgets.QSlider.TickPosition.TicksBelow)
         self.horizontalSlider_3.setTickInterval(10)
         self.horizontalSlider_3.setObjectName("horizontalSlider_3")
-        self.verticalLayout_3.addWidget(self.horizontalSlider_3)
+        self.verticalLayout_5.addWidget(self.horizontalSlider_3)
+        self.verticalLayout_3.addWidget(self.widget_5)
+        self.widget_6 = QtWidgets.QWidget(parent=self.widget_4)
+        self.widget_6.setStyleSheet("border: 4px solid rgb(15, 76, 117);\n"
+"border-top-left-radius :7px;\n"
+"border-top-right-radius : 7px;                  \n"
+"border-bottom-left-radius : 7px;\n"
+"border-bottom-right-radius : 7px")
+        self.widget_6.setObjectName("widget_6")
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.widget_6)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.selectBGBtn = QtWidgets.QPushButton(parent=self.widget_6)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.selectBGBtn.sizePolicy().hasHeightForWidth())
+        self.selectBGBtn.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft JhengHei UI")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.selectBGBtn.setFont(font)
+        self.selectBGBtn.setStyleSheet("color: rgb(0, 0, 0);\n"
+"border-color: rgb(187, 225, 250);\n"
+"border: 2px solid rgb(187, 225, 250);\n"
+"border-top-left-radius :7px;\n"
+"background-color: rgb(187, 225, 250);\n"
+"border-top-right-radius : 7px;                  \n"
+"border-bottom-left-radius : 7px;\n"
+"border-bottom-right-radius : 7px")
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap("icon/background.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.selectBGBtn.setIcon(icon5)
+        self.selectBGBtn.setIconSize(QtCore.QSize(50, 50))
+        self.selectBGBtn.setObjectName("selectBGBtn")
+        self.verticalLayout_6.addWidget(self.selectBGBtn)
+        self.BGcheckbox = QtWidgets.QCheckBox(parent=self.widget_6)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft JhengHei UI")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.BGcheckbox.setFont(font)
+        self.BGcheckbox.setStyleSheet("background-color: rgb(187, 225, 250);")
+        self.BGcheckbox.setObjectName("BGcheckbox")
+        self.verticalLayout_6.addWidget(self.BGcheckbox)
+        self.verticalLayout_3.addWidget(self.widget_6)
         self.horizontalLayout_2.addWidget(self.widget_4)
         self.verticalLayout_2.addWidget(self.widget_3)
         self.verticalLayout.addWidget(self.widget)
@@ -283,8 +389,10 @@ class Ui_MainWindow(object):
         self.cameraModeBtn.setText(_translate("MainWindow", "鏡頭模式\n"
 "Camera Mode"))
         self.selectClothbtn.setText(_translate("MainWindow", "選擇上衣"))
-        self.label_2.setText(_translate("MainWindow", "調整上衣尺寸"))
+        self.clothlabel.setText(_translate("MainWindow", "調整上衣尺寸(100%)"))
         self.selectPantsbtn.setText(_translate("MainWindow", "選擇下著"))
-        self.label.setText(_translate("MainWindow", "調整下著尺寸"))
+        self.pantslabel.setText(_translate("MainWindow", "調整下著尺寸(100%)"))
         self.selectSunglassesbtn.setText(_translate("MainWindow", "選擇眼鏡"))
-        self.label_3.setText(_translate("MainWindow", "調整眼鏡尺寸"))
+        self.sunglasseslabel.setText(_translate("MainWindow", "調整眼鏡尺寸(100%)"))
+        self.selectBGBtn.setText(_translate("MainWindow", "選擇背景"))
+        self.BGcheckbox.setText(_translate("MainWindow", "替換背景"))

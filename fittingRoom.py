@@ -11,6 +11,7 @@ class FittingRoom:
         # 讀入臉部辨識模型
         self.solutionPose = mp.solutions.pose
         self.pose = self.solutionPose.Pose()
+        self.backgroundisON = False
         # self.mpDraw = mp.solutions.drawing_utils
         self.default_outfit()
 
@@ -237,7 +238,7 @@ class FittingRoom:
 
     # 主函式：讀取相機，由他抓取每一偵的圖片，作為底圖，來添加衣服
     def main_capture(self, frame):
-        if self.background is not None:
+        if self.background is not None and self.backgroundisON:
             frame = self.ChangeBG(frame, self.background)
         # frame = ChangeBG(frame, background)
         # 更改背景
@@ -288,7 +289,7 @@ class FittingRoom:
     # 主函式：讀取圖片做為底圖，來添加衣服
     def main_picture(self):
         frame = self.ReadIMG(self.picPath)
-        if self.background is not None:
+        if self.background is not None and self.backgroundisON:
             frame = self.ChangeBG(frame, self.background)
         # frame = ChangeBG(frame, background)
         # 更改背景
