@@ -9,27 +9,36 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_fittingRoom(object):
-    def setupUi(self, fittingRoom):
-        fittingRoom.setObjectName("fittingRoom")
-        fittingRoom.resize(792, 600)
-        fittingRoom.setStyleSheet("background-color: rgb(22, 26, 48);")
-        self.centralwidget = QtWidgets.QWidget(parent=fittingRoom)
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet("background-color: rgb(22, 26, 48);")
+        self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.horizontalLayoutWidget = QtWidgets.QWidget(parent=self.centralwidget)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(20, 20, 431, 81))
-        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout.setSpacing(23)
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.widget = QtWidgets.QWidget(parent=self.centralwidget)
+        self.widget.setObjectName("widget")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.widget_2 = QtWidgets.QWidget(parent=self.widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_2.sizePolicy().hasHeightForWidth())
+        self.widget_2.setSizePolicy(sizePolicy)
+        self.widget_2.setMinimumSize(QtCore.QSize(337, 86))
+        self.widget_2.setStyleSheet("border: 4px solid rgb(15, 76, 117);\n"
+"border-top-left-radius :7px;\n"
+"border-top-right-radius : 7px;                  \n"
+"border-bottom-left-radius : 7px;\n"
+"border-bottom-right-radius : 7px")
+        self.widget_2.setObjectName("widget_2")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget_2)
+        self.horizontalLayout.setContentsMargins(-1, 11, -1, -1)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.frame = QtWidgets.QFrame(parent=self.horizontalLayoutWidget)
-        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame.setObjectName("frame")
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.frame)
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.pictureModeBtn = QtWidgets.QPushButton(parent=self.frame)
+        self.pictureModeBtn = QtWidgets.QPushButton(parent=self.widget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -51,9 +60,10 @@ class Ui_fittingRoom(object):
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
+        self.pictureModeBtn.setCheckable(True)
         self.pictureModeBtn.setObjectName("pictureModeBtn")
-        self.horizontalLayout_4.addWidget(self.pictureModeBtn)
-        self.cameraModeBtn = QtWidgets.QPushButton(parent=self.frame)
+        self.horizontalLayout.addWidget(self.pictureModeBtn)
+        self.cameraModeBtn = QtWidgets.QPushButton(parent=self.widget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -75,51 +85,115 @@ class Ui_fittingRoom(object):
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
+        self.cameraModeBtn.setCheckable(True)
         self.cameraModeBtn.setObjectName("cameraModeBtn")
-        self.horizontalLayout_4.addWidget(self.cameraModeBtn)
-        self.horizontalLayout.addWidget(self.frame)
-        self.horizontalLayoutWidget_2 = QtWidgets.QWidget(parent=self.centralwidget)
-        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(29, 109, 751, 461))
-        self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_2)
-        self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetDefaultConstraint)
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.addWidget(self.cameraModeBtn)
+        self.verticalLayout_2.addWidget(self.widget_2)
+        self.widget_3 = QtWidgets.QWidget(parent=self.widget)
+        self.widget_3.setObjectName("widget_3")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_3)
+        self.horizontalLayout_2.setContentsMargins(0, 8, 0, 0)
+        self.horizontalLayout_2.setSpacing(12)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.label = QtWidgets.QLabel(parent=self.horizontalLayoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Preferred)
+        self.imageArea = QtWidgets.QScrollArea(parent=self.widget_3)
+        self.imageArea.setStyleSheet("border: 4px solid rgb(15, 76, 117);\n"
+"border-top-left-radius :7px;\n"
+"border-top-right-radius : 7px;                  \n"
+"border-bottom-left-radius : 7px;\n"
+"border-bottom-right-radius : 7px")
+        self.imageArea.setLineWidth(0)
+        self.imageArea.setWidgetResizable(True)
+        self.imageArea.setObjectName("imageArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 606, 423))
+        self.scrollAreaWidgetContents.setStyleSheet("border: 4px solid rgb(15, 76, 117);\n"
+"border-top-left-radius :7px;\n"
+"border-top-right-radius : 7px;                  \n"
+"border-bottom-left-radius : 7px;\n"
+"border-bottom-right-radius : 7px")
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_4.setContentsMargins(4, 4, 4, 4)
+        self.verticalLayout_4.setSpacing(0)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.imageLabel = QtWidgets.QLabel(parent=self.scrollAreaWidgetContents)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy)
-        self.label.setMinimumSize(QtCore.QSize(600, 0))
-        self.label.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.label.setText("")
-        self.label.setObjectName("label")
-        self.horizontalLayout_2.addWidget(self.label)
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_2.setSpacing(20)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.label_2 = QtWidgets.QLabel(parent=self.horizontalLayoutWidget_2)
+        sizePolicy.setHeightForWidth(self.imageLabel.sizePolicy().hasHeightForWidth())
+        self.imageLabel.setSizePolicy(sizePolicy)
+        self.imageLabel.setMinimumSize(QtCore.QSize(0, 0))
+        self.imageLabel.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border: 0px;")
+        self.imageLabel.setText("")
+        self.imageLabel.setIndent(-1)
+        self.imageLabel.setObjectName("imageLabel")
+        self.verticalLayout_4.addWidget(self.imageLabel)
+        self.imageArea.setWidget(self.scrollAreaWidgetContents)
+        self.horizontalLayout_2.addWidget(self.imageArea)
+        self.widget_4 = QtWidgets.QWidget(parent=self.widget_3)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_4.sizePolicy().hasHeightForWidth())
+        self.widget_4.setSizePolicy(sizePolicy)
+        self.widget_4.setMinimumSize(QtCore.QSize(130, 0))
+        self.widget_4.setMaximumSize(QtCore.QSize(300, 16777215))
+        self.widget_4.setStyleSheet("border: 4px solid rgb(15, 76, 117);\n"
+"border-top-left-radius :7px;\n"
+"border-top-right-radius : 7px;                  \n"
+"border-bottom-left-radius : 7px;\n"
+"border-bottom-right-radius : 7px")
+        self.widget_4.setObjectName("widget_4")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.widget_4)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.selectClothbtn = QtWidgets.QPushButton(parent=self.widget_4)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.selectClothbtn.sizePolicy().hasHeightForWidth())
+        self.selectClothbtn.setSizePolicy(sizePolicy)
+        self.selectClothbtn.setStyleSheet("color: rgb(0, 0, 0);\n"
+"font: 75 10pt \"Consolas\";\n"
+"border-color: rgb(187, 225, 250);\n"
+"border: 2px solid rgb(187, 225, 250);\n"
+"border-top-left-radius :7px;\n"
+"background-color: rgb(187, 225, 250);\n"
+"border-top-right-radius : 7px;                  \n"
+"border-bottom-left-radius : 7px;\n"
+"border-bottom-right-radius : 7px")
+        self.selectClothbtn.setObjectName("selectClothbtn")
+        self.verticalLayout_3.addWidget(self.selectClothbtn)
+        self.label_2 = QtWidgets.QLabel(parent=self.widget_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
         self.label_2.setSizePolicy(sizePolicy)
-        self.label_2.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_2.setStyleSheet("color: rgb(255, 255, 255);\n"
+"border: 0px;")
         self.label_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_2.setObjectName("label_2")
-        self.verticalLayout_2.addWidget(self.label_2)
-        self.horizontalSlider = QtWidgets.QSlider(parent=self.horizontalLayoutWidget_2)
-        self.horizontalSlider.setOrientation(QtCore.Qt.Orientation.Horizontal)
-        self.horizontalSlider.setObjectName("horizontalSlider")
-        self.verticalLayout_2.addWidget(self.horizontalSlider)
-        self.pushButton_4 = QtWidgets.QPushButton(parent=self.horizontalLayoutWidget_2)
+        self.verticalLayout_3.addWidget(self.label_2)
+        self.clothSizeSlider = QtWidgets.QSlider(parent=self.widget_4)
+        self.clothSizeSlider.setStyleSheet("color: rgb(255, 255, 255);\n"
+"border: 0px;")
+        self.clothSizeSlider.setMaximum(200)
+        self.clothSizeSlider.setSingleStep(1)
+        self.clothSizeSlider.setProperty("value", 100)
+        self.clothSizeSlider.setSliderPosition(100)
+        self.clothSizeSlider.setOrientation(QtCore.Qt.Orientation.Horizontal)
+        self.clothSizeSlider.setTickPosition(QtWidgets.QSlider.TickPosition.TicksBelow)
+        self.clothSizeSlider.setTickInterval(10)
+        self.clothSizeSlider.setObjectName("clothSizeSlider")
+        self.verticalLayout_3.addWidget(self.clothSizeSlider)
+        self.selectPantsbtn = QtWidgets.QPushButton(parent=self.widget_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_4.sizePolicy().hasHeightForWidth())
-        self.pushButton_4.setSizePolicy(sizePolicy)
-        self.pushButton_4.setStyleSheet("color: rgb(0, 0, 0);\n"
+        sizePolicy.setHeightForWidth(self.selectPantsbtn.sizePolicy().hasHeightForWidth())
+        self.selectPantsbtn.setSizePolicy(sizePolicy)
+        self.selectPantsbtn.setStyleSheet("color: rgb(0, 0, 0);\n"
 "font: 75 10pt \"Consolas\";\n"
 "border-color: rgb(187, 225, 250);\n"
 "border: 2px solid rgb(187, 225, 250);\n"
@@ -128,15 +202,36 @@ class Ui_fittingRoom(object):
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.verticalLayout_2.addWidget(self.pushButton_4)
-        self.pushButton_7 = QtWidgets.QPushButton(parent=self.horizontalLayoutWidget_2)
+        self.selectPantsbtn.setObjectName("selectPantsbtn")
+        self.verticalLayout_3.addWidget(self.selectPantsbtn)
+        self.label = QtWidgets.QLabel(parent=self.widget_4)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
+        self.label.setStyleSheet("color: rgb(255, 255, 255);\n"
+"border: 0px;")
+        self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label.setObjectName("label")
+        self.verticalLayout_3.addWidget(self.label)
+        self.pantSizeSlider = QtWidgets.QSlider(parent=self.widget_4)
+        self.pantSizeSlider.setStyleSheet("color: rgb(255, 255, 255);\n"
+"border: 0px;")
+        self.pantSizeSlider.setMaximum(200)
+        self.pantSizeSlider.setProperty("value", 100)
+        self.pantSizeSlider.setOrientation(QtCore.Qt.Orientation.Horizontal)
+        self.pantSizeSlider.setTickPosition(QtWidgets.QSlider.TickPosition.TicksBelow)
+        self.pantSizeSlider.setTickInterval(10)
+        self.pantSizeSlider.setObjectName("pantSizeSlider")
+        self.verticalLayout_3.addWidget(self.pantSizeSlider)
+        self.selectSunglassesbtn = QtWidgets.QPushButton(parent=self.widget_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_7.sizePolicy().hasHeightForWidth())
-        self.pushButton_7.setSizePolicy(sizePolicy)
-        self.pushButton_7.setStyleSheet("color: rgb(0, 0, 0);\n"
+        sizePolicy.setHeightForWidth(self.selectSunglassesbtn.sizePolicy().hasHeightForWidth())
+        self.selectSunglassesbtn.setSizePolicy(sizePolicy)
+        self.selectSunglassesbtn.setStyleSheet("color: rgb(0, 0, 0);\n"
 "font: 75 10pt \"Consolas\";\n"
 "border-color: rgb(187, 225, 250);\n"
 "border: 2px solid rgb(187, 225, 250);\n"
@@ -145,86 +240,51 @@ class Ui_fittingRoom(object):
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
-        self.pushButton_7.setObjectName("pushButton_7")
-        self.verticalLayout_2.addWidget(self.pushButton_7)
-        self.pushButton_6 = QtWidgets.QPushButton(parent=self.horizontalLayoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
+        self.selectSunglassesbtn.setObjectName("selectSunglassesbtn")
+        self.verticalLayout_3.addWidget(self.selectSunglassesbtn)
+        self.label_3 = QtWidgets.QLabel(parent=self.widget_4)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_6.sizePolicy().hasHeightForWidth())
-        self.pushButton_6.setSizePolicy(sizePolicy)
-        self.pushButton_6.setStyleSheet("color: rgb(0, 0, 0);\n"
-"font: 75 10pt \"Consolas\";\n"
-"border-color: rgb(187, 225, 250);\n"
-"border: 2px solid rgb(187, 225, 250);\n"
-"border-top-left-radius :7px;\n"
-"background-color: rgb(187, 225, 250);\n"
-"border-top-right-radius : 7px;                  \n"
-"border-bottom-left-radius : 7px;\n"
-"border-bottom-right-radius : 7px")
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.verticalLayout_2.addWidget(self.pushButton_6)
-        self.pushButton_8 = QtWidgets.QPushButton(parent=self.horizontalLayoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_8.sizePolicy().hasHeightForWidth())
-        self.pushButton_8.setSizePolicy(sizePolicy)
-        self.pushButton_8.setStyleSheet("color: rgb(0, 0, 0);\n"
-"font: 75 10pt \"Consolas\";\n"
-"border-color: rgb(187, 225, 250);\n"
-"border: 2px solid rgb(187, 225, 250);\n"
-"border-top-left-radius :7px;\n"
-"background-color: rgb(187, 225, 250);\n"
-"border-top-right-radius : 7px;                  \n"
-"border-bottom-left-radius : 7px;\n"
-"border-bottom-right-radius : 7px")
-        self.pushButton_8.setObjectName("pushButton_8")
-        self.verticalLayout_2.addWidget(self.pushButton_8)
-        self.pushButton_3 = QtWidgets.QPushButton(parent=self.horizontalLayoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_3.sizePolicy().hasHeightForWidth())
-        self.pushButton_3.setSizePolicy(sizePolicy)
-        self.pushButton_3.setStyleSheet("color: rgb(0, 0, 0);\n"
-"font: 75 10pt \"Consolas\";\n"
-"border-color: rgb(187, 225, 250);\n"
-"border: 2px solid rgb(187, 225, 250);\n"
-"border-top-left-radius :7px;\n"
-"background-color: rgb(187, 225, 250);\n"
-"border-top-right-radius : 7px;                  \n"
-"border-bottom-left-radius : 7px;\n"
-"border-bottom-right-radius : 7px")
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.verticalLayout_2.addWidget(self.pushButton_3)
-        self.verticalLayout_2.setStretch(0, 1)
-        self.verticalLayout_2.setStretch(2, 1)
-        self.verticalLayout_2.setStretch(3, 1)
-        self.verticalLayout_2.setStretch(4, 1)
-        self.verticalLayout_2.setStretch(5, 1)
-        self.verticalLayout_2.setStretch(6, 1)
-        self.horizontalLayout_2.addLayout(self.verticalLayout_2)
-        self.horizontalLayout_2.setStretch(0, 1)
-        self.horizontalLayout_2.setStretch(1, 1)
-        fittingRoom.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(parent=fittingRoom)
+        sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
+        self.label_3.setSizePolicy(sizePolicy)
+        self.label_3.setStyleSheet("color: rgb(255, 255, 255);\n"
+"border: 0px;")
+        self.label_3.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_3.setObjectName("label_3")
+        self.verticalLayout_3.addWidget(self.label_3)
+        self.horizontalSlider_3 = QtWidgets.QSlider(parent=self.widget_4)
+        self.horizontalSlider_3.setStyleSheet("color: rgb(255, 255, 255);\n"
+"border: 0px;")
+        self.horizontalSlider_3.setMaximum(200)
+        self.horizontalSlider_3.setPageStep(10)
+        self.horizontalSlider_3.setProperty("value", 100)
+        self.horizontalSlider_3.setOrientation(QtCore.Qt.Orientation.Horizontal)
+        self.horizontalSlider_3.setTickPosition(QtWidgets.QSlider.TickPosition.TicksBelow)
+        self.horizontalSlider_3.setTickInterval(10)
+        self.horizontalSlider_3.setObjectName("horizontalSlider_3")
+        self.verticalLayout_3.addWidget(self.horizontalSlider_3)
+        self.horizontalLayout_2.addWidget(self.widget_4)
+        self.verticalLayout_2.addWidget(self.widget_3)
+        self.verticalLayout.addWidget(self.widget)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
         self.statusbar.setObjectName("statusbar")
-        fittingRoom.setStatusBar(self.statusbar)
+        MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(fittingRoom)
-        QtCore.QMetaObject.connectSlotsByName(fittingRoom)
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def retranslateUi(self, fittingRoom):
+    def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        fittingRoom.setWindowTitle(_translate("fittingRoom", "Fitting Room"))
-        self.pictureModeBtn.setText(_translate("fittingRoom", "相片模式\n"
+        MainWindow.setWindowTitle(_translate("MainWindow", "FittingRoom"))
+        self.pictureModeBtn.setText(_translate("MainWindow", "相片模式\n"
 "Picture Mode"))
-        self.cameraModeBtn.setText(_translate("fittingRoom", "鏡頭模式\n"
+        self.cameraModeBtn.setText(_translate("MainWindow", "鏡頭模式\n"
 "Camera Mode"))
-        self.label_2.setText(_translate("fittingRoom", "調整衣服尺寸"))
-        self.pushButton_4.setText(_translate("fittingRoom", "選擇上衣"))
-        self.pushButton_7.setText(_translate("fittingRoom", "選擇下著"))
-        self.pushButton_6.setText(_translate("fittingRoom", "選擇眼鏡"))
-        self.pushButton_8.setText(_translate("fittingRoom", "PushButton"))
-        self.pushButton_3.setText(_translate("fittingRoom", "PushButton"))
+        self.selectClothbtn.setText(_translate("MainWindow", "選擇上衣"))
+        self.label_2.setText(_translate("MainWindow", "調整上衣尺寸"))
+        self.selectPantsbtn.setText(_translate("MainWindow", "選擇下著"))
+        self.label.setText(_translate("MainWindow", "調整下著尺寸"))
+        self.selectSunglassesbtn.setText(_translate("MainWindow", "選擇眼鏡"))
+        self.label_3.setText(_translate("MainWindow", "調整眼鏡尺寸"))
