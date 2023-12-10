@@ -96,7 +96,6 @@ class MainWindow(QMainWindow,Ui_MainWindow):
     def clothSizeSliderChanged(self):
         self.ft.set_clothSize(self.clothSizeSlider.value()/100.0)
         self.clothlabel.setText("調整上著尺寸("+str(self.clothSizeSlider.value())+"%)")
-        print(self.clothSizeSlider.value())
         if self.pictureModeBtn.isChecked():
             self.update_picture()
     
