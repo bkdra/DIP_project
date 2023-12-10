@@ -23,6 +23,8 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         self.clothCheckBox.stateChanged.connect(self.clothCheckBoxChanged)
         self.pantsCheckBox.stateChanged.connect(self.pantsCheckBoxChanged)
         self.sunglassesCheckBox.stateChanged.connect(self.sunglassesCheckBoxChanged)
+        self.pencilStyleBtn.clicked.connect(self.set_pencilStyle)
+        self.cartoonStyleBtn.clicked.connect(self.set_cartoonStyle)
         self.set_style()
         
     
@@ -176,6 +178,29 @@ class MainWindow(QMainWindow,Ui_MainWindow):
             if self.pictureModeBtn.isChecked():
                 self.update_picture()
 
+    def set_pencilStyle(self):
+        if self.pencilStyleBtn.isChecked():
+            self.ft.style = 1
+            self.cartoonStyleBtn.setChecked(False)
+            if self.pictureModeBtn.isChecked():
+                self.update_picture()
+        else:
+            self.ft.style = 0
+            if self.pictureModeBtn.isChecked():
+                self.update_picture()
+
+    def set_cartoonStyle(self):
+        if self.cartoonStyleBtn.isChecked():
+            self.ft.style = 2
+            self.pencilStyleBtn.setChecked(False)
+            if self.pictureModeBtn.isChecked():
+                self.update_picture()
+        else:
+            self.ft.style = 0
+            if self.pictureModeBtn.isChecked():
+                self.update_picture()
+
+
 
     def set_style(self):
         SBstylesheet = '''
@@ -234,6 +259,8 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         '''
         self.pictureModeBtn.setStyleSheet(modeBtnstylesheet)
         self.cameraModeBtn.setStyleSheet(modeBtnstylesheet)
+        self.pencilStyleBtn.setStyleSheet(modeBtnstylesheet)
+        self.cartoonStyleBtn.setStyleSheet(modeBtnstylesheet)
 
         selectBtnstylesheet = '''
             QPushButton{

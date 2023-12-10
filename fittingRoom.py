@@ -17,6 +17,7 @@ class FittingRoom:
         self.sunglassesisON = True
         # self.mpDraw = mp.solutions.drawing_utils
         self.default_outfit()
+        self.style = 0
 
 
     def default_outfit(self):
@@ -353,10 +354,20 @@ class FittingRoom:
                 frame = self.Add_cloth(frame, self.cloth, position1, position2, position3, position4, self.clothSize)
             # 若未超出邊界，則為人的身體加上衣服與褲子
             # self.mpDraw.draw_landmarks(frame, poseResult.pose_landmarks, self.solutionPose.POSE_CONNECTIONS)
+            
+        if self.style == 1:
+            frame = self.Pencil_Sketch(frame)
+        elif self.style == 2:
+            frame = self.stylization(frame)
         return frame
             
 
+    def Pencil_Sketch(self, img):   
+        img1, img2 = cv2.pencilSketch(img, sigma_r=0.05, sigma_s=60, shade_factor=0.03)
+        return img1
 
+    def stylization(self, img):
+        return cv2.stylization(img, sigma_r=0.2, sigma_s=50)
 
     # 主函式：讀取圖片做為底圖，來添加衣服
     def main_picture(self):
@@ -403,7 +414,11 @@ class FittingRoom:
             if not((condi_m_x1) or (condi_l_x2) or (condi_m_y1 and condi_m_y2) or (condi_l_y3 and condi_l_y4)) and self.clothisON:
                 frame = self.Add_cloth(frame, self.cloth, position1, position2, position3, position4, self.clothSize)
             # 若未超出邊界，則為人的身體加上衣服與褲子
-            
+
+        if self.style == 1:
+            frame = self.Pencil_Sketch(frame)
+        elif self.style == 2:
+            frame = self.stylization(frame)
         return frame
 
     def set_cloth(self, cloth):

@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(953, 878)
+        MainWindow.resize(999, 878)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -27,7 +27,12 @@ class Ui_MainWindow(object):
         self.widget.setObjectName("widget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.widget_2 = QtWidgets.QWidget(parent=self.widget)
+        self.widget_7 = QtWidgets.QWidget(parent=self.widget)
+        self.widget_7.setObjectName("widget_7")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.widget_7)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.widget_2 = QtWidgets.QWidget(parent=self.widget_7)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -99,7 +104,76 @@ class Ui_MainWindow(object):
         self.cameraModeBtn.setCheckable(True)
         self.cameraModeBtn.setObjectName("cameraModeBtn")
         self.horizontalLayout.addWidget(self.cameraModeBtn)
-        self.verticalLayout_2.addWidget(self.widget_2)
+        self.horizontalLayout_3.addWidget(self.widget_2)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem)
+        self.widget_8 = QtWidgets.QWidget(parent=self.widget_7)
+        self.widget_8.setStyleSheet("border: 4px solid rgb(15, 76, 117);\n"
+"border-top-left-radius :7px;\n"
+"border-top-right-radius : 7px;                  \n"
+"border-bottom-left-radius : 7px;\n"
+"border-bottom-right-radius : 7px")
+        self.widget_8.setObjectName("widget_8")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.widget_8)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.pencilStyleBtn = QtWidgets.QPushButton(parent=self.widget_8)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pencilStyleBtn.sizePolicy().hasHeightForWidth())
+        self.pencilStyleBtn.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft JhengHei UI")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.pencilStyleBtn.setFont(font)
+        self.pencilStyleBtn.setStyleSheet("color: rgb(0, 0, 0);\n"
+"border-color: rgb(187, 225, 250);\n"
+"border: 2px solid rgb(187, 225, 250);\n"
+"border-top-left-radius :7px;\n"
+"background-color: rgb(187, 225, 250);\n"
+"border-top-right-radius : 7px;                  \n"
+"border-bottom-left-radius : 7px;\n"
+"border-bottom-right-radius : 7px")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("icon/pencil.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pencilStyleBtn.setIcon(icon2)
+        self.pencilStyleBtn.setIconSize(QtCore.QSize(45, 45))
+        self.pencilStyleBtn.setCheckable(True)
+        self.pencilStyleBtn.setObjectName("pencilStyleBtn")
+        self.horizontalLayout_4.addWidget(self.pencilStyleBtn)
+        self.cartoonStyleBtn = QtWidgets.QPushButton(parent=self.widget_8)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.cartoonStyleBtn.sizePolicy().hasHeightForWidth())
+        self.cartoonStyleBtn.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft JhengHei UI")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.cartoonStyleBtn.setFont(font)
+        self.cartoonStyleBtn.setStyleSheet("color: rgb(0, 0, 0);\n"
+"border-color: rgb(187, 225, 250);\n"
+"border: 2px solid rgb(187, 225, 250);\n"
+"border-top-left-radius :7px;\n"
+"background-color: rgb(187, 225, 250);\n"
+"border-top-right-radius : 7px;                  \n"
+"border-bottom-left-radius : 7px;\n"
+"border-bottom-right-radius : 7px")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("icon/film.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.cartoonStyleBtn.setIcon(icon3)
+        self.cartoonStyleBtn.setIconSize(QtCore.QSize(45, 45))
+        self.cartoonStyleBtn.setCheckable(True)
+        self.cartoonStyleBtn.setObjectName("cartoonStyleBtn")
+        self.horizontalLayout_4.addWidget(self.cartoonStyleBtn)
+        self.horizontalLayout_3.addWidget(self.widget_8)
+        self.verticalLayout_2.addWidget(self.widget_7)
         self.widget_3 = QtWidgets.QWidget(parent=self.widget)
         self.widget_3.setObjectName("widget_3")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_3)
@@ -116,7 +190,7 @@ class Ui_MainWindow(object):
         self.imageArea.setWidgetResizable(True)
         self.imageArea.setObjectName("imageArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 628, 711))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 674, 711))
         self.scrollAreaWidgetContents.setStyleSheet("border: 4px solid rgb(15, 76, 117);\n"
 "border-top-left-radius :7px;\n"
 "border-top-right-radius : 7px;                  \n"
@@ -190,9 +264,9 @@ class Ui_MainWindow(object):
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("icon/tshirt.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.selectClothbtn.setIcon(icon2)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("icon/tshirt.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.selectClothbtn.setIcon(icon4)
         self.selectClothbtn.setIconSize(QtCore.QSize(40, 40))
         self.selectClothbtn.setObjectName("selectClothbtn")
         self.verticalLayout_5.addWidget(self.selectClothbtn)
@@ -265,9 +339,9 @@ class Ui_MainWindow(object):
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("icon/jeans.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.selectPantsbtn.setIcon(icon3)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap("icon/jeans.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.selectPantsbtn.setIcon(icon5)
         self.selectPantsbtn.setIconSize(QtCore.QSize(40, 40))
         self.selectPantsbtn.setObjectName("selectPantsbtn")
         self.verticalLayout_5.addWidget(self.selectPantsbtn)
@@ -338,9 +412,9 @@ class Ui_MainWindow(object):
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("icon/sunglasses.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.selectSunglassesbtn.setIcon(icon4)
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap("icon/sunglasses.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.selectSunglassesbtn.setIcon(icon6)
         self.selectSunglassesbtn.setIconSize(QtCore.QSize(50, 50))
         self.selectSunglassesbtn.setObjectName("selectSunglassesbtn")
         self.verticalLayout_5.addWidget(self.selectSunglassesbtn)
@@ -420,9 +494,9 @@ class Ui_MainWindow(object):
 "border-top-right-radius : 7px;                  \n"
 "border-bottom-left-radius : 7px;\n"
 "border-bottom-right-radius : 7px")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("icon/background.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.selectBGBtn.setIcon(icon5)
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap("icon/background.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.selectBGBtn.setIcon(icon7)
         self.selectBGBtn.setIconSize(QtCore.QSize(50, 50))
         self.selectBGBtn.setObjectName("selectBGBtn")
         self.verticalLayout_6.addWidget(self.selectBGBtn)
@@ -460,6 +534,8 @@ class Ui_MainWindow(object):
 "Picture Mode"))
         self.cameraModeBtn.setText(_translate("MainWindow", "鏡頭模式\n"
 "Camera Mode"))
+        self.pencilStyleBtn.setText(_translate("MainWindow", "鉛筆風格"))
+        self.cartoonStyleBtn.setText(_translate("MainWindow", "卡通風格"))
         self.selectClothbtn.setText(_translate("MainWindow", "選擇上衣"))
         self.clothlabel.setText(_translate("MainWindow", "調整上衣尺寸(100%)"))
         self.clothCheckBox.setText(_translate("MainWindow", "顯示上衣"))
