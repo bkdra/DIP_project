@@ -17,14 +17,21 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         self.selectSunglassesbtn.clicked.connect(self.selectSunglassesBtnClicked)
         self.pantSizeSlider.valueChanged.connect(self.pantSizeSliderChanged)
         self.clothSizeSlider.valueChanged.connect(self.clothSizeSliderChanged)
+        self.sunglassessize.valueChanged.connect(self.sunglassessizeChanged)
         self.selectBGBtn.clicked.connect(self.selectBGBtnClicked)
         self.BGcheckbox.stateChanged.connect(self.BGcheckboxChanged)
+        self.clothCheckBox.stateChanged.connect(self.clothCheckBoxChanged)
+        self.pantsCheckBox.stateChanged.connect(self.pantsCheckBoxChanged)
+        self.sunglassesCheckBox.stateChanged.connect(self.sunglassesCheckBoxChanged)
         self.set_style()
         
     
     def pictureModeBtnClicked(self):
         self.pictureModeBtn.setChecked(True)
         self.cameraModeBtn.setChecked(False)
+        self.clothCheckBox.setChecked(True)
+        self.pantsCheckBox.setChecked(True)
+        self.sunglassesCheckBox.setChecked(True)
         if hasattr(self, 'camera') and self.camera.isOpened():
             self.camera.release()  # 釋放相機資源
         if hasattr(self, 'timer') and self.timer.isActive():
@@ -38,6 +45,9 @@ class MainWindow(QMainWindow,Ui_MainWindow):
     def cameraModeBtnClicked(self):
         self.pictureModeBtn.setChecked(False)
         self.cameraModeBtn.setChecked(True)
+        self.clothCheckBox.setChecked(True)
+        self.pantsCheckBox.setChecked(True)
+        self.sunglassesCheckBox.setChecked(True)
         if hasattr(self, 'camera') and self.camera.isOpened():
             self.camera.release()  # 釋放相機資源
         if hasattr(self, 'timer') and self.timer.isActive():
@@ -53,12 +63,15 @@ class MainWindow(QMainWindow,Ui_MainWindow):
     def update_frame(self):
         ret, frame = self.camera.read()
         if ret:
-            processed_frame = self.ft.main_capture(frame)
-            # 將 OpenCV 影像轉換為 QImage
-            cvRGBImg = cv2.cvtColor(processed_frame, cv2.COLOR_BGR2RGB)
-            qimg = QImage(cvRGBImg.data,cvRGBImg.shape[1], cvRGBImg.shape[0], QImage.Format.Format_RGB888)
-            pixmap = QPixmap.fromImage(qimg)
-            self.imageLabel.setPixmap(pixmap)
+            try:
+                processed_frame = self.ft.main_capture(frame)
+                # 將 OpenCV 影像轉換為 QImage
+                cvRGBImg = cv2.cvtColor(processed_frame, cv2.COLOR_BGR2RGB)
+                qimg = QImage(cvRGBImg.data,cvRGBImg.shape[1], cvRGBImg.shape[0], QImage.Format.Format_RGB888)
+                pixmap = QPixmap.fromImage(qimg)
+                self.imageLabel.setPixmap(pixmap)
+            except:
+                pass
 
     def selectClothBtnClicked(self):
         path = QFileDialog.getOpenFileName(self, "開啟圖片", "./")[0]
@@ -98,6 +111,12 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         self.clothlabel.setText("調整上著尺寸("+str(self.clothSizeSlider.value())+"%)")
         if self.pictureModeBtn.isChecked():
             self.update_picture()
+
+    def sunglassessizeChanged(self):
+        self.ft.set_sunglassesSize(self.sunglassessize.value()/100.0)
+        self.sunglasseslabel.setText("調整眼鏡尺寸("+str(self.sunglassessize.value())+"%)")
+        if self.pictureModeBtn.isChecked():
+            self.update_picture()
     
     def update_picture(self):
         img = self.ft.main_picture()
@@ -126,6 +145,38 @@ class MainWindow(QMainWindow,Ui_MainWindow):
             self.ft.backgroundisON = False
             if self.pictureModeBtn.isChecked():
                 self.update_picture()
+
+    def clothCheckBoxChanged(self):
+        if self.clothCheckBox.isChecked():
+            self.ft.clothisON = True
+            if self.pictureModeBtn.isChecked():
+                self.update_picture()
+        else:
+            self.ft.clothisON = False
+            if self.pictureModeBtn.isChecked():
+                self.update_picture()
+    
+    def pantsCheckBoxChanged(self):
+        if self.pantsCheckBox.isChecked():
+            self.ft.pantsisON = True
+            if self.pictureModeBtn.isChecked():
+                self.update_picture()
+        else:
+            self.ft.pantsisON = False
+            if self.pictureModeBtn.isChecked():
+                self.update_picture()
+    
+    def sunglassesCheckBoxChanged(self):
+        if self.sunglassesCheckBox.isChecked():
+            self.ft.sunglassesisON = True
+            if self.pictureModeBtn.isChecked():
+                self.update_picture()
+        else:
+            self.ft.sunglassesisON = False
+            if self.pictureModeBtn.isChecked():
+                self.update_picture()
+
+
     def set_style(self):
         SBstylesheet = '''
             QScrollBarArea{

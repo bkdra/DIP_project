@@ -12,8 +12,12 @@ class FittingRoom:
         self.solutionPose = mp.solutions.pose
         self.pose = self.solutionPose.Pose()
         self.backgroundisON = False
+        self.clothisON = True
+        self.pantsisON = True
+        self.sunglassesisON = True
         # self.mpDraw = mp.solutions.drawing_utils
         self.default_outfit()
+
 
     def default_outfit(self):
         self.cloth = self.ReadIMG("./cloth/long_sleeves.jpg")
@@ -29,6 +33,7 @@ class FittingRoom:
         # 去背
         self.clothSize = 1.0
         self.pantsSize = 1.0
+        self.sunglassesSize = 1.0
 
     # 顯示圖片
     def ShowIMG(img, winName):
@@ -316,8 +321,8 @@ class FittingRoom:
         # 改變視窗大小
         poseResult = self.pose.process(frame)
         # 尋找身體各部位位置
-
-        self.Add_sunglass(frame, self.sunglass, self.face_cascade)
+        if self.sunglassesisON:
+            self.Add_sunglass(frame, self.sunglass, self.face_cascade, self.sunglassesSize)
         # 添加太陽眼鏡
 
         # 當有讀取到身體各部位資料時
@@ -342,9 +347,9 @@ class FittingRoom:
             condi_l_y4 = position4[1] <= 0
             # 各個檢測四個部位的座標是否超出圖片邊界的條件
             
-            if not((condi_m_y3 and condi_m_y4) or (condi_l_y3 and condi_l_y4) or (condi_l_x3 and condi_l_x4) or (condi_m_x3 and condi_m_x4)):
+            if not((condi_m_y3 and condi_m_y4) or (condi_l_y3 and condi_l_y4) or (condi_l_x3 and condi_l_x4) or (condi_m_x3 and condi_m_x4)) and self.pantsisON:
                 frame = self.Add_pants(frame, self.pants, position1, position2, position3, position4, self.pantsSize)
-            if not((condi_m_x1) or (condi_l_x2) or (condi_m_y1 and condi_m_y2) or (condi_l_y3 and condi_l_y4)):
+            if not((condi_m_x1) or (condi_l_x2) or (condi_m_y1 and condi_m_y2) or (condi_l_y3 and condi_l_y4)) and self.clothisON:
                 frame = self.Add_cloth(frame, self.cloth, position1, position2, position3, position4, self.clothSize)
             # 若未超出邊界，則為人的身體加上衣服與褲子
             # self.mpDraw.draw_landmarks(frame, poseResult.pose_landmarks, self.solutionPose.POSE_CONNECTIONS)
@@ -367,8 +372,8 @@ class FittingRoom:
         # 改變視窗大小
         poseResult = self.pose.process(frame)
         # 尋找身體各部位位置
-
-        self.Add_sunglass(frame, self.sunglass, self.face_cascade)
+        if self.sunglassesisON:
+            self.Add_sunglass(frame, self.sunglass, self.face_cascade, self.sunglassesSize)
         # 將墨鏡加到臉上
 
         # 當有讀取到身體各部位資料時
@@ -393,9 +398,9 @@ class FittingRoom:
             condi_l_y4 = position4[1] <= 0
             # 各個檢測四個部位的座標是否超出圖片邊界的條件
                 
-            if not((condi_m_y3 and condi_m_y4) or (condi_l_y3 and condi_l_y4) or (condi_l_x3 and condi_l_x4) or (condi_m_x3 and condi_m_x4)):
+            if not((condi_m_y3 and condi_m_y4) or (condi_l_y3 and condi_l_y4) or (condi_l_x3 and condi_l_x4) or (condi_m_x3 and condi_m_x4)) and self.pantsisON:
                 frame = self.Add_pants(frame, self.pants, position1, position2, position3, position4, self.pantsSize)
-            if not((condi_m_x1) or (condi_l_x2) or (condi_m_y1 and condi_m_y2) or (condi_l_y3 and condi_l_y4)):
+            if not((condi_m_x1) or (condi_l_x2) or (condi_m_y1 and condi_m_y2) or (condi_l_y3 and condi_l_y4)) and self.clothisON:
                 frame = self.Add_cloth(frame, self.cloth, position1, position2, position3, position4, self.clothSize)
             # 若未超出邊界，則為人的身體加上衣服與褲子
             
@@ -418,6 +423,9 @@ class FittingRoom:
     
     def set_pantsSize(self, pantsSize):
         self.pantsSize = pantsSize
+
+    def set_sunglassesSize(self, sunglassesSize):
+        self.sunglassesSize = sunglassesSize
 
     def set_background(self, background):
         if background is None:
