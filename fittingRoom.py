@@ -51,8 +51,31 @@ class FittingRoom:
 
     # 換背景
     def ChangeBG(self, img, img_BG):
-        segmentor = SelfiSegmentation()
+        segmentor = SelfiSegmentation()    
+        ysize_BG = img_BG.shape[0]
+        xsize_BG = img_BG.shape[1]
+        ysize_img = img.shape[0]
+        xsize_img = img.shape[1]
+
+        if xsize_BG <= xsize_img and ysize_BG >= ysize_img:
+            img_BG = cv2.resize(img_BG, (img.shape[1], int(img_BG.shape[0] * img.shape[1] / img_BG.shape[1])))
+            img_BG = img_BG[img_BG.shape[0] - img.shape[0]:img_BG.shape[0], :, :]
+        elif xsize_BG >= xsize_img and ysize_BG <= ysize_img:
+            img_BG = cv2.resize(img_BG, (int(img_BG.shape[1] * img.shape[0] / img_BG.shape[0]), img.shape[0]))
+            middle_x_img = int(img_BG.shape[1]/2)
+            img_BG = img_BG[:, middle_x_img - int(xsize_img/2) : middle_x_img + int(xsize_img/2), :]
+            img_BG = cv2.resize(img_BG, (xsize_img, ysize_img))
+        elif (xsize_BG > xsize_img and ysize_BG > ysize_img) or (xsize_BG < xsize_img and ysize_BG < ysize_img):
+            img_BG = cv2.resize(img_BG, (int(img_BG.shape[1] * img.shape[0] / img_BG.shape[0]), img.shape[0]))
+            if img_BG.shape[1] >= xsize_img:
+                middle_x_img = int(img_BG.shape[1]/2)
+                img_BG = img_BG[:, middle_x_img - int(xsize_img/2) : middle_x_img + int(xsize_img/2), :]
+                img_BG = cv2.resize(img_BG, (xsize_img, ysize_img))
+            else:
+                img_BG = cv2.resize(img_BG, (img.shape[1], int(img_BG.shape[0] * img.shape[1] / img_BG.shape[1])))
+                img_BG = img_BG[img_BG.shape[0] - img.shape[0]:img_BG.shape[0], :, :]
         img_BG = cv2.resize(img_BG, (img.shape[1], img.shape[0]))
+        
         result_img = segmentor.removeBG(img, img_BG, cutThreshold=0.7)
         return result_img
 
@@ -215,7 +238,7 @@ class FittingRoom:
 
         return img
 
-    def Add_sunglass(self, img, sunglass, face_cascade):
+    def Add_sunglass(self, img, sunglass, face_cascade, adjustment = 1):
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, scaleFactor=1.5)  
         # 尋找臉部位置 
@@ -230,10 +253,54 @@ class FittingRoom:
         temp = ()
         if(type(faces) != type(temp)):
             for singleFace in faces:
-                resize_sunglass = cv2.resize(sunglass, (singleFace[2], int(sunglass_1bit.shape[0]*(singleFace[2] / sunglass_1bit.shape[1]))))
-                resize_sunglass_1bit = cv2.resize(sunglass_1bit, (singleFace[2], int(sunglass_1bit.shape[0]*(singleFace[2] / sunglass_1bit.shape[1]))))
-                img[singleFace[1]+ int(singleFace[3]*0.27):singleFace[1]+resize_sunglass_1bit.shape[0] + int(singleFace[3]*0.27), singleFace[0]:singleFace[0]+resize_sunglass_1bit.shape[1]] = cv2.bitwise_and(img[singleFace[1]+ int(singleFace[3]*0.27):singleFace[1]+resize_sunglass_1bit.shape[0]+ int(singleFace[3]*0.27), singleFace[0]:singleFace[0]+resize_sunglass_1bit.shape[1]], resize_sunglass_1bit)
-                img[singleFace[1]+ int(singleFace[3]*0.27):singleFace[1]+resize_sunglass_1bit.shape[0] + int(singleFace[3]*0.27), singleFace[0]:singleFace[0]+resize_sunglass_1bit.shape[1]] = cv2.bitwise_or(img[singleFace[1]+ int(singleFace[3]*0.27):singleFace[1]+resize_sunglass_1bit.shape[0] + int(singleFace[3]*0.27), singleFace[0]:singleFace[0]+resize_sunglass_1bit.shape[1]], resize_sunglass)
+                resize_sunglass = cv2.resize(sunglass, (int(singleFace[2] * adjustment), int(sunglass_1bit.shape[0]*(singleFace[2] / sunglass_1bit.shape[1]) * adjustment)))
+                resize_sunglass_1bit = cv2.resize(sunglass_1bit, (int(singleFace[2] * adjustment), int(sunglass_1bit.shape[0]*(singleFace[2] / sunglass_1bit.shape[1]) * adjustment)))
+
+                x_pos = singleFace[0] + int(singleFace[2]/2)
+                y_pos = singleFace[1]+ int(singleFace[3]*0.27)
+                x_size = resize_sunglass_1bit.shape[1]
+                y_size = resize_sunglass_1bit.shape[0]
+
+                middle_img_sum_x = x_pos + int(x_size / 2)
+                middle_img_diff_x = x_pos - int(x_size / 2)
+                if middle_img_diff_x <= 0:
+                    middle_img_diff_x = 0
+
+                temp_img = img[y_pos:y_pos+resize_sunglass_1bit.shape[0], middle_img_diff_x:middle_img_sum_x]
+
+                if (middle_img_sum_x >= img.shape[1]) and (resize_sunglass.shape[0] == temp_img.shape[0]):          # 僅右側超出螢幕外
+                    resize_sunglass_1bit = resize_sunglass_1bit[:temp_img.shape[0], :temp_img.shape[1], :]
+                    resize_sunglass = resize_sunglass[:temp_img.shape[0], :temp_img.shape[1], :]
+                elif (middle_img_diff_x == 0) and (resize_sunglass.shape[0] == temp_img.shape[0]):                  # 僅左側超出螢幕外
+                    resize_sunglass_1bit = resize_sunglass_1bit[:temp_img.shape[0], x_size - temp_img.shape[1]:x_size, :]
+                    resize_sunglass = resize_sunglass[:temp_img.shape[0], resize_sunglass.shape[1] - temp_img.shape[1]:resize_sunglass.shape[1], :]
+                elif abs(temp_img.shape[1] - x_size) <= 2 and y_pos <= 0:                          # 僅上側超出螢幕外
+                    resize_sunglass = cv2.resize(resize_sunglass, (temp_img.shape[1], resize_sunglass.shape[0]))
+                    resize_sunglass_1bit = cv2.resize(resize_sunglass_1bit, (temp_img.shape[1], resize_sunglass_1bit.shape[0]))
+                    resize_sunglass_1bit = resize_sunglass_1bit[y_pos + y_size - temp_img.shape[0] : y_pos + y_size, :x_size, :]
+                    resize_sunglass = resize_sunglass[y_pos + y_size - temp_img.shape[0] : y_pos + y_size, :x_size, :]
+                elif abs(temp_img.shape[1] - x_size) <= 2 and ((y_pos + y_size) >= resize_sunglass_1bit.shape[0]): # 僅下側超出螢幕外
+                    resize_sunglass = cv2.resize(resize_sunglass, (temp_img.shape[1], resize_sunglass.shape[0]))
+                    resize_sunglass_1bit = cv2.resize(resize_sunglass_1bit, (temp_img.shape[1], resize_sunglass_1bit.shape[0]))
+                    resize_sunglass_1bit = resize_sunglass_1bit[: temp_img.shape[0], :x_size, :]
+                    resize_sunglass = resize_sunglass[: temp_img.shape[0], :x_size, :]
+                else:                                                                                       # 同時超出x和y的邊界
+                    if (middle_img_sum_x >= img.shape[1]) and ((y_pos + y_size) >= resize_sunglass_1bit.shape[0]):        # 超出右下
+                        resize_sunglass_1bit = resize_sunglass_1bit[:temp_img.shape[0], :temp_img.shape[1], :]
+                        resize_sunglass = resize_sunglass[:temp_img.shape[0], :temp_img.shape[1], :]
+                    elif (middle_img_diff_x == 0) and ((y_pos + y_size) >= resize_sunglass_1bit.shape[0]):                # 超出左下
+                        resize_sunglass_1bit = resize_sunglass_1bit[:temp_img.shape[0], x_size - temp_img.shape[1]:x_size, :]
+                        resize_sunglass = resize_sunglass[:temp_img.shape[0], resize_sunglass.shape[1] - temp_img.shape[1]:resize_sunglass.shape[1], :]
+                    elif (middle_img_sum_x >= img.shape[1]) and y_pos <= 0:                                 # 超出右上
+                        resize_sunglass_1bit = resize_sunglass_1bit[y_pos + y_size - temp_img.shape[0] : y_pos + y_size, :temp_img.shape[1], :]
+                        resize_sunglass = resize_sunglass[y_pos + y_size - temp_img.shape[0] : y_pos + y_size, :temp_img.shape[1], :]
+                    else:                                                                                   # 超出左上
+                        resize_sunglass_1bit = resize_sunglass_1bit[y_pos + y_size - temp_img.shape[0] : x_size - temp_img.shape[1]:x_size, :]
+                        resize_sunglass = resize_sunglass[y_pos + y_size - temp_img.shape[0] : resize_sunglass.shape[1] - temp_img.shape[1]:resize_sunglass.shape[1], :]
+
+                
+                img[y_pos:y_pos+resize_sunglass_1bit.shape[0], middle_img_diff_x:middle_img_sum_x] = cv2.bitwise_and(img[y_pos:y_pos+resize_sunglass_1bit.shape[0], middle_img_diff_x:middle_img_sum_x], resize_sunglass_1bit)
+                img[y_pos:y_pos+resize_sunglass_1bit.shape[0], middle_img_diff_x:middle_img_sum_x] = cv2.bitwise_or(img[y_pos:y_pos+resize_sunglass_1bit.shape[0], middle_img_diff_x:middle_img_sum_x], resize_sunglass)
 
 
     # 主函式：讀取相機，由他抓取每一偵的圖片，作為底圖，來添加衣服
